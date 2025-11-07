@@ -219,7 +219,7 @@ go test -bench=BenchmarkCanopyStorage -benchtime=1x
 ## Examples
 ```bash
 # Larger values and more versions
-CANOPY_VALUE_SIZE=4096 CANOPY_VERSIONS=100 CANOPY_RUNS=3 \
+CANOPY_VALUE_SIZE=20000 CANOPY_VERSIONS=150 CANOPY_RUNS=3 \
   go test -bench=BenchmarkCanopyStorage -benchtime=1x
 
 # MonoSpace with value-log enabled
@@ -227,17 +227,10 @@ MONOSPACE_ENABLE_VALUE_LOG=1 MONOSPACE_INLINE_THRESHOLD=256 \
   go test -bench=BenchmarkCanopyStorage -benchtime=1x
 
 # Quick run for iteration (small dataset)
-CANOPY_KEYS=200 CANOPY_VERSIONS=5 CANOPY_RUNS=2 \
+CANOPY_KEYS=1000 CANOPY_VERSIONS=10 CANOPY_RUNS=2 \
   go test -bench=BenchmarkCanopyStorage -benchtime=1x
 
 # Production-scale run (large dataset, with timeout)
-CANOPY_KEYS=10000 CANOPY_VERSIONS=100 CANOPY_RUNS=3 \
-  go test -bench=BenchmarkCanopyStorage -benchtime=1x -timeout=30m
-
-# Verbose output for long-running tests
-CANOPY_KEYS=5000 CANOPY_VERSIONS=50 \
-  go test -bench=BenchmarkCanopyStorage -benchtime=1x -v
-
-# Disable fsync (exploration only)
-PEBBLE_SYNC=0 go test -bench=BenchmarkCanopyStorage -benchtime=1x
+CANOPY_KEYS=100000 CANOPY_VERSIONS=50 CANOPY_RUNS=5 \
+  go test -bench=BenchmarkCanopyStorage -benchtime=1x
 ```
