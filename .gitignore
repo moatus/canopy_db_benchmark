@@ -1,0 +1,4 @@
+# Ignore local, lowercase warp notes
+warp.md
+# Ignore local Go test binaries
+canopy-bench.test
